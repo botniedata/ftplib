@@ -14,17 +14,9 @@ ftp = FTP_TLS(timeout=30)
 ftp.connect(ftpHost, ftpPort)
 
 # Login credentials
-ftp.login(ftpUsername, ftpPassword)
-
-# download files from FTP Server
-ftp.cwd("/Data Engineering")
-
-# Setup secure connection
-ftp.prot_p()
-
-# -->
+ftp.login(ftpUsername, ftpPassword) 
 
 # Send quit
 ftp.quit()
 
-print("FTP Login Complete...")
+print("FTP Connection Complete...")
