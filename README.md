@@ -15,4 +15,5 @@
 |   code                                |   description                                 |
 |---------------------------------------|-----------------------------------------------|
 |   `wsl -l`                            |   to see a list of installed distro names     |
-|   `wsl --unregister <Distri Name>`    |   to remove install distri                    |   
+|   `wsl --unregister <Distri Name>`    |   to remove installed wsl distri              |   
+|   `wsl --install -d <Distri Name>`    |   to install wsl distri                       |
