@@ -5,7 +5,7 @@ from ftplib import FTP_TLS
 ftpHost = 'localhost'
 ftpPort = 21
 ftpUsername = 'test'
-ftpPassword = 'admin'
+ftpPassword = 'test'
 
 # FTP timeout
 ftp = FTP_TLS(timeout=30)
