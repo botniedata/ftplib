@@ -9,3 +9,4 @@
     -psycopg2
 - del ftplib from requirements.txt
 - pip install -r requirements.txt
+- ftp connection verified

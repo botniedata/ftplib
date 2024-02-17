@@ -16,6 +16,9 @@ ftp.connect(ftpHost, ftpPort)
 # Login credentials
 ftp.login(ftpUsername, ftpPassword)
 
+# download files from FTP Server
+ftp.cwd("/Data Engineering")
+
 # Setup secure connection
 ftp.prot_p()
 
