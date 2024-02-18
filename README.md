@@ -47,8 +47,8 @@
 |   sudo nano `/etc/vsftpd.config`      |    remove the # from `chroot_local_user=YES`                     |   to restrict local user to HOME directories                                          |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `user_sub_token=$USER`              |   to redirect the user routes to `/home/$USER/ftp`                                    |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `local_root=/home/$USER/ftp`        |   to redirect the user routes to `/home/$USER/ftp`                                    |
-|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min)port=10000`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
-|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min)port=10100`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min_port=10000`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min_port=10100`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `userlist_file=/etc/vsftpd.userlist`|   to allow only users on the userlist to access                                       |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `userlist_deny=NO`                  |   to allow only users on the userlist to access                                       |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `allow_anon_ssl=NO`                 |   to restrict anonymous access                                                        |
@@ -64,12 +64,12 @@
 ### To Restart system services after modify /etc/vsftpd.config
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
-|   `sudo systemctl restart vsftpd      |   to restart FTP Server Services                  |
+|   `sudo systemctl restart vsftpd`     |   to restart FTP Server Services                  |
 
 ### Allow configured ports and passive firewall
 |   code                                                                |   description                                                       |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------|
-|   `sudo ufw allow from any to any port 20,21,10000:101000 proto tcp`  |   to enable ports 20 and 21, firewall 10000 and 101000 from /etc/   |
+|   `sudo ufw allow from any to any port 20,21,10000:10100 proto tcp`   |   to enable ports 20 and 21, firewall 10000 and 101000 from /etc/   |
 |   [sudo] password for admin:                                          |   Rules updated... Rules updated (v6)                               |
 
 ### Adds User access FTP
@@ -105,12 +105,23 @@
 ### Create a sample file to upload
 |   code                                                                                  |   description                                                       |
 |-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-|   ```echo "My FTP Server Message (pipe) sudo tee /home/phil/ftp/upload/sample.txt```    |   to create a simple file from upload folder                        |
+|   ```echo "My FTP Server Message" (pipe) sudo tee /home/<user>/ftp/upload/sample.txt```   |   to create a simple file from upload folder                      |
+
+### Check users permission
+|   code                                                                                  |   description                                                       |
+|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+|   `sudo ls -la /home/<user>/ftp`                                                        |   to check permission of created user                               |
+
+### Add the created user to userlist
+|   code                                                                                  |   description                                                       |
+|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+|   `sudo ls -la /home/<user>/ftp`                                                        |   to add create user to allow to access FTP Server                  |
+
 
 ### Secure Connection via openssl
 |   code                                                                                                                                                        |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   `sudo openssl req -x509 -nodes - days 3650 -newkey  rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem`                          |
+|   `sudo openssl req -x509 -nodes -days 3650 -newkey  rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem`                          |
 
 |   Description                                                                                                                                                 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
