@@ -16,6 +16,9 @@ ftp.connect(ftpHost, ftpPort)
 # Login credentials
 ftp.login(ftpUsername, ftpPassword) 
 
+# Change Directory
+ftp.cwd("/")
+
 # Send quit
 ftp.quit()
 
