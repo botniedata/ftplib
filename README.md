@@ -1,6 +1,6 @@
 ### Table of Content
-[1. Check and Install Distro WSL](#check-wsl-list-and-install-distro)
-[2. Update, Upgrade, Install and Check the FTP Server Status](#install-an-ftp-server-via-ubuntu-with-vsftpd)
+[1. Check and Install Distro WSL](#check-wsl-list-and-install-distro) <br>
+[2. Update, Upgrade, Install and Check the FTP Server Status](#install-an-ftp-server-via-ubuntu-with-vsftpd)<br>
 
 ### Check WSL List and Install Distro
 |   code                                |   description                                 |
