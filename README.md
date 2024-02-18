@@ -37,6 +37,7 @@
 |   `sudo service vsftpd start`         |   to start FTP Server Services                    |
 |   `sudo service vsftpd stop`          |   to stop FTP Server Services                     |
 
+
 ### Configure the FTP Server
 |   file                                |   code                                                           |   description                                                                         |
 |---------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------|
@@ -50,12 +51,20 @@
 |   `/etc/vsftpd.config`                |    go to the bottom file add `pasv_min)port=10100`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
 |   `/etc/vsftpd.config`                |    go to the bottom file add `userlist_file=/etc/vsftpd.userlist`|   to allow only users on the userlist to access                                       |
 |   `/etc/vsftpd.config`                |    go to the bottom file add `userlist_deny=NO`                  |   to allow only users on the userlist to access                                       |
+|   `/etc/vsftpd.config`                |    go to the bottom file add `allow_anon_ssl=NO`                 |   to restrict anonymous access                                                        |
+|   `/etc/vsftpd.config`                |    go to the bottom file add `force_local_data_ssl=YES`          |   to restrict anonymous access                                                        |
+|   `/etc/vsftpd.config`                |    go to the bottom file add `force_local_logins_ssl_YES`        |   to restrict anonymous access                                                        |
 
 ### To save /etc/vsftpd/ file
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   press `CTRL + O` then ENTER         |   to save modification                            |
 |   press `CTRL + X` then ENTER         |   to exit editing mode                            |
+
+### To Restart system services after modify /etc/vsftpd.config
+|   Note                                |   description                                     |
+|---------------------------------------|---------------------------------------------------|
+|   `sudo systemctl restart vsftpd      |   to restart FTP Server Services                  |
 
 ### Allow configured ports and passive firewall
 |   code                                                                |   description                                                       |
@@ -102,6 +111,7 @@
 |   code                                                                                                                                                        |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   `sudo openssl req -x509 -nodes - days 3650 -newkey  rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem`                          |
+
 |   Description                                                                                                                                                 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   it will generate 2048-bit private key and self-signed SSL Certificate... and to enter information will be incorporated to the certificate request           |
@@ -112,4 +122,7 @@
 |   `rsa_cert_file=/etc/ssl/private/vsftpd.pem`                                                                                                                 |
 |   `rsa_private_file=/etc/ssl/private/vsftpd.pem`                                                                                                              |
 |   `ssl_enable=YES`                                                                                                                                            |
+
+|   code                                                                                                                                                        |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   it will generate 2048-bit private key and self-signed SSL Certificate... and to enter information will be incorporated to the certificate request           |
