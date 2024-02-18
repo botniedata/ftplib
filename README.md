@@ -115,7 +115,7 @@
 ### Add the created user to userlist
 |   code                                                                                  |   description                                                       |
 |-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-|   `sudo ls -la /home/<user>/ftp`                                                        |   to add create user to allow to access FTP Server                  |
+|   `echo "<user>" (pipe) sudo tee -a /etc/vsftpd.userlist`                               |   to add create user to allow to access FTP Server                  |
 
 
 ### Secure Connection via openssl
