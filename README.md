@@ -41,7 +41,7 @@
 ### Configure the FTP Server
 |   file                                |   code                                                           |   description                                                                         |
 |---------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-|   `/etc/vsftpd.config`                |    `sudo cp /etc/vsftpd.config /etc/vsftpd.config_backdate`      |   to create a back-up file before configuration                                       |
+|   `/etc/vsftpd.config`                |    `sudo cp /etc/vsftpd.conf /etc/vsftpd.conf_orig`              |   to create a back-up file before configuration                                       |
 |   `/etc/vsftpd.config`                |    remove the # from `local_enable=YES`                          |   to allow local users to log in                                                      | 
 |   `/etc/vsftpd.config`                |    remove the # from `write_enable=YES`                          |   to enable any form of FTP write command (upload)                                    |
 |   `/etc/vsftpd.config`                |    remove the # from `chroot_local_user=YES`                     |   to restrict local user to HOME directories                                          |
