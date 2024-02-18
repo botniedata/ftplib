@@ -1,19 +1,22 @@
 # Import FTP from ftplib
-import ftplib
+from ftplib import FTP_TLS
 
 # Connection parameters
 ftpHost = 'localhost'
 ftpPort = 21
-ftpUsername = 'test'
-ftpPassword = 'test'
+ftpUsername = 'depph'
+ftpPassword = 'depph'
 
-# Connect FTP Server
-ftp_server = ftplib.FTP(ftpHost, ftpUsername, ftpPassword)
+# FTP timeout
+ftp = FTP_TLS(timeout=30)
 
-# force UTF-8 encoding
-ftp_server.encoding = "utf-8"
- 
+# Connect to the FTP server
+ftp.connect(ftpHost, ftpPort)
+
+# Login credentials
+ftp.login(ftpUsername, ftpPassword) 
+
 # Send quit
-ftp_server.quit()
+ftp.quit()
 
 print("FTP Connection Complete...")

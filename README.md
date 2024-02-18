@@ -26,14 +26,14 @@
 |  EOD  |   [End of Document](#end-of-document)                                                                               |
 
 ### Check WSL List and Install Distro
-|   code                                |   description                                 |
+|   code                                |   description (PowerShell)                    |
 |---------------------------------------|-----------------------------------------------|
 |   `wsl -l`                            |   to see a list of installed distro names     |
 |   `wsl --unregister <Distri Name>`    |   to remove installed wsl distri              |   
 |   `wsl --install -d <Distri Name>`    |   to install wsl distri                       |
 
 ### Install an FTP Server via Ubuntu with VSFTPD
-|   code                                |   description                                 |
+|   code                                |   description (WSL Ubuntu)                    |
 |---------------------------------------|-----------------------------------------------|
 |   `sudo apt update`                   |   to check updates to Ubuntu                  |
 |   `sudo apt upgrade`                  |   to install upgrades to Ubuntu               |
@@ -41,19 +41,19 @@
 |   `sudo service vsftpd status`        |   to check status of FTP Server               |
 
 ### Check the FTP Service is Running
-|   Note                                |   description                                     |
+|   Note                                |   description (WSL Ubuntu)                        |
 |---------------------------------------|---------------------------------------------------|
 |   `Active: active (running)`          |   if you see this command the FTP is `running`    |
 
 ### Stop and Start FTP Service
-|   Note                                |   description                                     |
+|   Note                                |   description (WSL Ubuntu)                        |
 |---------------------------------------|---------------------------------------------------|
 |   `sudo service vsftpd start`         |   to start FTP Server Services                    |
 |   `sudo service vsftpd stop`          |   to stop FTP Server Services                     |
 
 
 ### Configure the FTP Server
-|   file                                |   code                                                           |   description                                                                         |
+|   file                                |   code                                                           |   description (WSL Ubuntu)                                                            |
 |---------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 |   `/etc/vsftpd.config`                |    `sudo cp /etc/vsftpd.conf /etc/vsftpd.conf_orig`              |   to create a back-up file before configuration                                       |
 |   sudo nano `/etc/vsftpd.config`      |    remove the # from `local_enable=YES`                          |   to allow local users to log in                                                      | 
@@ -70,79 +70,79 @@
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `force_local_logins_ssl_YES`        |   to restrict anonymous access                                                        |
 
 ### Save /etc/vsftpd/ file
-|   Note                                |   description                                     |
+|   Note                                |   description (WSL Ubuntu)                        |
 |---------------------------------------|---------------------------------------------------|
 |   press `CTRL + O` then ENTER         |   to save modification                            |
 |   press `CTRL + X` then ENTER         |   to exit editing mode                            |
 
 ### Restart System Services after modify /etc/vsftpd.config
-|   Note                                |   description                                     |
+|   Note                                |   description (WSL Ubuntu)                        |
 |---------------------------------------|---------------------------------------------------|
 |   `sudo systemctl restart vsftpd`     |   to restart FTP Server Services                  |
 
 ### Enable Ports and Passive Firewall
-|   code                                                                |   description                                                       |
+|   code                                                                |   description (WSL Ubuntu)                                          |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo ufw allow from any to any port 20,21,10000:10100 proto tcp`   |   to enable ports 20 and 21, firewall 10000 and 101000 from /etc/   |
 |   [sudo] password for admin:                                          |   Rules updated... Rules updated (v6)                               |
 
 ### Creates New User
-|   code                    |   description                                                       |
+|   code                    |   description (WSL Ubuntu)                                          |
 |---------------------------|---------------------------------------------------------------------|
 |   `sudo adduser phil`     |   to create a new user ... adds user details                        |
 
 ### Make Directory for New User
-|   code                            |   description                                                       |
+|   code                            |   description (WSL Ubuntu)                                          |
 |-----------------------------------|---------------------------------------------------------------------|
 |   `sudo mkdir /home/phil/ftp`     |   to create home directory ftp for the user                         |
 
 ### Make Ownership for New User
-|   code                                                |   description                                                       |
+|   code                                                |   description (WSL Ubuntu)                                          |
 |-------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo chown nobody:nogroup /home/<user>/ftp`        |   to create ownership to the created user                           |
 
 ### Remove Root Access for New User
-|   code                                                |   description                                                       |
+|   code                                                |   description (WSL Ubuntu)                                          |
 |-------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo chmod a-w /home/<user>/ftp`                   |   to remove root access to the created user                         |
 
 ### Create Upload Folder
-|   code                                                |   description                                                       |
+|   code                                                |   description (WSL Ubuntu)                                          |
 |-------------------------------------------------------|---------------------------------------------------------------------|
-|   `sudo mkdir /home/<user>/ftp/upload`            |   to create upload folder                                           |
+|   `sudo mkdir /home/<user>/ftp/upload`                |   to create upload folder                                           |
 
 ### Create Ownership User to Upload Folder
-|   code                                                |   description                                                       |
+|   code                                                |   description (WSL Ubuntu)                                          |
 |-------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo chown <user>:<user> /home/phil/ftp/upload`    |   to create ownership to the ftp user upload                        |
 
 ### Create a sample text file
-|   code                                                                                  |   description                                                       |
+|   code                                                                                  |   description (WSL Ubuntu)                                          |
 |-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 |   ```echo "<some-message>" (pipe) sudo tee /home/<user>/ftp/upload/sample.txt```        |   to create a simple file from upload folder                        |
 
 ### Check User's Permission
-|   code                                                                                  |   description                                                       |
+|   code                                                                                  |   description (WSL Ubuntu)                                          |
 |-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo ls -la /home/<user>/ftp`                                                        |   to check permission of created user                               |
 
 ### Adds New User to vsftpd.userlist
-|   code                                                                                  |   description                                                       |
+|   code                                                                                  |   description (WSL Ubuntu)                                          |
 |-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 |   `echo "<user>" (pipe) sudo tee -a /etc/vsftpd.userlist`                               |   to add create user to allow to access FTP Server                  |
 
 
 ### Secure Connection via OPENSSL
-|   code                                                                                                                                                        |
+|   code (WSL Ubuntu)                                                                                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   `sudo openssl req -x509 -nodes -days 3650 -newkey  rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem`                          |
+|   `sudo openssl req -x509 -nodes -days 3650 -newkey  rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem`                           |
 
 |   Description                                                                                                                                                 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   it will generate 2048-bit private key and self-signed SSL Certificate... and to enter information will be incorporated to the certificate request           |
 
 ### Add SSL Private Key to /etc/vsftpd.conf file
-|   code                                                                                                                                                        |
+|   code (WSL Ubuntu)                                                                                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   `rsa_cert_file=/etc/ssl/private/vsftpd.pem`                                                                                                                 |
 |   `rsa_private_file=/etc/ssl/private/vsftpd.pem`                                                                                                              |
