@@ -26,12 +26,19 @@
 |   `sudo apt install vsftpd`           |   to install FTP Server                       |
 |   `sudo service vsftpd status`        |   to check status of FTP Server               |
 
-
+### To check if the FTP Server is running
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   `Active: active (running)`          |   if you see this command the FTP is `running`    |
 
+### To Stop and Start Services of FTP Server
+|   Note                                |   description                                     |
+|---------------------------------------|---------------------------------------------------|
+|   `sudo service vsftpd start`         |   to start FTP Server Services                    |
+|   `sudo service vsftpd stop`          |   to stop FTP Server Services                     |
+
 ### Configure the FTP Server
-|   settings                            |   description                                 |
-|---------------------------------------|-----------------------------------------------|
-|   `sudo apt update`                   |   to check updates to Ubuntu                  |
+|   file                                |   code                                                        |   description                                     |
+|---------------------------------------|---------------------------------------------------------------|---------------------------------------------------|
+|   `/etc/vsftpd.config`                |    `sudo cp /etc/vsftpd.config /etc/vsftpd.config_backdate`   |   to create a back-up file before configuration   |
+|   `/etc/vsftpd.config`                |    remove the # from `local_enable=YES`                       |   allow local users to log in                     |      
