@@ -42,18 +42,18 @@
 |   file                                |   code                                                           |   description                                                                         |
 |---------------------------------------|------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 |   `/etc/vsftpd.config`                |    `sudo cp /etc/vsftpd.conf /etc/vsftpd.conf_orig`              |   to create a back-up file before configuration                                       |
-|   `/etc/vsftpd.config`                |    remove the # from `local_enable=YES`                          |   to allow local users to log in                                                      | 
-|   `/etc/vsftpd.config`                |    remove the # from `write_enable=YES`                          |   to enable any form of FTP write command (upload)                                    |
-|   `/etc/vsftpd.config`                |    remove the # from `chroot_local_user=YES`                     |   to restrict local user to HOME directories                                          |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `user_sub_token=$USER`              |   to redirect the user routes to `/home/$USER/ftp`                                    |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `local_root=/home/$USER/ftp`        |   to redirect the user routes to `/home/$USER/ftp`                                    |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `pasv_min)port=10000`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `pasv_min)port=10100`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `userlist_file=/etc/vsftpd.userlist`|   to allow only users on the userlist to access                                       |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `userlist_deny=NO`                  |   to allow only users on the userlist to access                                       |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `allow_anon_ssl=NO`                 |   to restrict anonymous access                                                        |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `force_local_data_ssl=YES`          |   to restrict anonymous access                                                        |
-|   `/etc/vsftpd.config`                |    go to the bottom file add `force_local_logins_ssl_YES`        |   to restrict anonymous access                                                        |
+|   sudo nano `/etc/vsftpd.config`      |    remove the # from `local_enable=YES`                          |   to allow local users to log in                                                      | 
+|   sudo nano `/etc/vsftpd.config`      |    remove the # from `write_enable=YES`                          |   to enable any form of FTP write command (upload)                                    |
+|   sudo nano `/etc/vsftpd.config`      |    remove the # from `chroot_local_user=YES`                     |   to restrict local user to HOME directories                                          |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `user_sub_token=$USER`              |   to redirect the user routes to `/home/$USER/ftp`                                    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `local_root=/home/$USER/ftp`        |   to redirect the user routes to `/home/$USER/ftp`                                    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min)port=10000`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `pasv_min)port=10100`               |   to resolve if there's any firewall issue between server and client (port 20, 21)    |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `userlist_file=/etc/vsftpd.userlist`|   to allow only users on the userlist to access                                       |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `userlist_deny=NO`                  |   to allow only users on the userlist to access                                       |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `allow_anon_ssl=NO`                 |   to restrict anonymous access                                                        |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `force_local_data_ssl=YES`          |   to restrict anonymous access                                                        |
+|   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `force_local_logins_ssl_YES`        |   to restrict anonymous access                                                        |
 
 ### To save /etc/vsftpd/ file
 |   Note                                |   description                                     |
