@@ -1,17 +1,8 @@
-### 02172024
+### Table of Content
+[1. Check and Install Distro WSL](#check-wsl-list-and-install-distro)
+[2. Update, Upgrade, Install and Check the FTP Server Status](#install-an-ftp-server-via-ubuntu-with-vsftpd)
 
-- adds file README.md
-- adds requirements.txt
-    -ftplib
-    -pandas
-    -sqlalchemy
-    -requests
-    -psycopg2
-- del ftplib from requirements.txt
-- pip install -r requirements.txt
-- ftp connection verified
-
-### Check WSL List
+### Check WSL List and Install Distro
 |   code                                |   description                                 |
 |---------------------------------------|-----------------------------------------------|
 |   `wsl -l`                            |   to see a list of installed distro names     |
