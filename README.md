@@ -1,6 +1,17 @@
-### Table of Content
-[1. Check and Install Distro WSL](#check-wsl-list-and-install-distro) <br>
-[2. Update, Upgrade, Install and Check the FTP Server Status](#install-an-ftp-server-via-ubuntu-with-vsftpd)<br>
+## Table of Content
+
+|   No  |   Name                                                                                                              |
+|-------|---------------------------------------------------------------------------------------------------------------------|
+|   1   |   [Check and Install Distro WSL](#check-wsl-list-and-install-distro)                                                |
+|   2   |   [Update, Upgrade, Install and Check the FTP Server Status](#install-an-ftp-server-via-ubuntu-with-vsftpd)         |
+|   3   |   [Check the FTP Service is Running](#check-the-ftp-service-is-running)                                             |
+|   4   |   [Stop and Start FTP Service](#stop-and-start-ftp-service)                                                         |
+|   5   |   [Configure /etc/vsftpd.conf file](#configure-the-ftp-server)                                                      |
+|   6   |   [Save configured /etc/vsftpd.conf file](#save-etcvsftpd-file)                                                     |
+|   7   |   [Restarts configured /etc/vsftpd.conf file](#restart-system-services-after-modify-etcvsftpdconfig)                |
+|   8   |   [Enable Ports and Passive Firewall](#enable-ports-and-passive-firewall)                                           |
+|   9   |   [Creates New User](#creates-new-user)                                                                             |
+
 
 ### Check WSL List and Install Distro
 |   code                                |   description                                 |
@@ -17,12 +28,12 @@
 |   `sudo apt install vsftpd`           |   to install FTP Server                       |
 |   `sudo service vsftpd status`        |   to check status of FTP Server               |
 
-### To check if the FTP Server is running
+### Check the FTP Service is Running
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   `Active: active (running)`          |   if you see this command the FTP is `running`    |
 
-### To Stop and Start Services of FTP Server
+### Stop and Start FTP Service
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   `sudo service vsftpd start`         |   to start FTP Server Services                    |
@@ -46,24 +57,24 @@
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `force_local_data_ssl=YES`          |   to restrict anonymous access                                                        |
 |   sudo nano `/etc/vsftpd.config`      |    go to the bottom file add `force_local_logins_ssl_YES`        |   to restrict anonymous access                                                        |
 
-### To save /etc/vsftpd/ file
+### Save /etc/vsftpd/ file
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   press `CTRL + O` then ENTER         |   to save modification                            |
 |   press `CTRL + X` then ENTER         |   to exit editing mode                            |
 
-### To Restart system services after modify /etc/vsftpd.config
+### Restart System Services after modify /etc/vsftpd.config
 |   Note                                |   description                                     |
 |---------------------------------------|---------------------------------------------------|
 |   `sudo systemctl restart vsftpd`     |   to restart FTP Server Services                  |
 
-### Allow configured ports and passive firewall
+### Enable Ports and Passive Firewall
 |   code                                                                |   description                                                       |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------|
 |   `sudo ufw allow from any to any port 20,21,10000:10100 proto tcp`   |   to enable ports 20 and 21, firewall 10000 and 101000 from /etc/   |
 |   [sudo] password for admin:                                          |   Rules updated... Rules updated (v6)                               |
 
-### Adds User access FTP
+### Creates New User
 |   code                    |   description                                                       |
 |---------------------------|---------------------------------------------------------------------|
 |   `sudo adduser phil`     |   to create a new user ... adds user details                        |
