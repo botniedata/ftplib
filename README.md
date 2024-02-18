@@ -54,3 +54,11 @@
 |---------------------------------------|---------------------------------------------------|
 |   press `CTRL + O` then ENTER         |   to save modification                            |
 |   press `CTRL + X` then ENTER         |   to exit editing mode                            |
+
+### Allow configured ports and passive firewall
+|   code                                                                |   description                                                       |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------|
+|   `sudo ufw allow from any to any port 20,21,10000:101000 proto tcp`  |   to enable ports 20 and 21, firewall 10000 and 101000 from /etc/   |
+|   [sudo] password for admin:                                          |   Rules updated... Rules updated (v6)                               |
+
+### 
