@@ -3,3 +3,4 @@ sqlalchemy
 requests
 psycopg2
 paramiko
+pysftp

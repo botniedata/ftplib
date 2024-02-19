@@ -1,27 +1,30 @@
-import ftplib
+import paramiko
 
-# connection parameter
-ftpHost = 'localhost'
-ftpUName = 'depph'
-ftpPWord = 'depph'
-ftpPort = 21
+# create ssh client 
+ssh_client = paramiko.SSHClient()
 
-# ftp client instance
-ftp = ftplib.FTP_TLS(timeout=30)
+# remote server credentials
+host = "localhost"
+username = "depph"
+password = "depph"
+port = 22
 
-# connect to the FTP server
-ftp.connect(ftpHost, ftpPort)
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh_client.connect(hostname=host,port=port,username=username,password=password)
 
-# login to the FTP server
-ftp.login(ftpUName, ftpPWord)
+# create an SFTP client object
+ftp = ssh_client.open_sftp()
 
-# setup secure data connection
-ftp.prot_p()
+# display files and directories
+files = ftp.listdir()
+print(f"Listing all the files and Directory: {files}\n")
 
-# current working directory
-ftp.cwd('home/depph/ftp/upload')
+# download a file from the remote server
+local_file_path = r'F:\Data Engineering\ftplib\download_folder\sample.txt'
+remote_file_path = '/ftp/upload/'
 
-#
-ftp.quit()
+# download a file from the remote server
+files = ftp.put(local_file_path, remote_file_path)
 
-print("FTP Connection Complete!")
+ftp.close()
+ssh_client.close()
