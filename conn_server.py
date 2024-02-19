@@ -1,17 +1,26 @@
-import paramiko
+import ftplib
 
-# create ssh client 
-ssh_client = paramiko.SSHClient()
+# connection parameter
+ftpHost = 'localhost'
+ftpUName = 'depph'
+ftpPWord = 'depph'
+ftpPort = 21
 
-# remote server credentials
-host = "localhost"
-username = "depph"
-password = "depph"
-port = 22
+# ftp client instance
+ftp = ftplib.FTP_TLS(timeout=30)
 
-ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh_client.connect(hostname=host,port=port,username=username,password=password)
+# connect to the FTP server
+ftp.connect(ftpHost, ftpPort)
 
-print('connection established successfully')
+# login to the FTP server
+ftp.login(ftpUName, ftpPWord)
 
-ssh_client.close()
+# setup secure data connection
+ftp.prot_p()
+
+# some
+
+#
+ftp.quit()
+
+print("FTP Connection Complete!")
