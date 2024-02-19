@@ -18,7 +18,8 @@ ftp.login(ftpUName, ftpPWord)
 # setup secure data connection
 ftp.prot_p()
 
-# some
+# current working directory
+ftp.cwd('home/depph/ftp/upload')
 
 #
 ftp.quit()
